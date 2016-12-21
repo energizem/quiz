@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Radio</title>
+
+<script language="javascript">
+
+var allQuestions = [{
+    question: "Question1?", 
+    choices: ["Answer1", "Answer2", "Answer3", "Answer4"],
+    CorrectAnswer:0},
+    {
+    question: "Question2?", 
+    choices: ["Answer1", "Answer2", "Answer3", "Answer4"],
+    CorrectAnswer:0},
+    {
+    question: "Question3?", 
+    choices: ["Answer1", "Answer2", "Answer3", "Answer4"],
+    CorrectAnswer:0},
+    {
+    question: "Question4?", 
+    choices: ["Answer1", "Answer2", "Answer3", "Answer4"],
+    CorrectAnswer:0}
+    ];
+
+var currentQuestion=0;
+var CorrectAnswer=0;
+
+
+function RadioCheck() {
+    
+//populate question in HTML
+    var question = document.getElementById("question");
+    question.nextSibling.data = allQuestions[currentQuestion].question;
+
+//populate answers in HTML
+    var ans1 = document.getElementById("ans1");
+    ans1.nextSibling.data = allQuestions[currentQuestion].choices[0];
+
+    var ans2 = document.getElementById("ans2");
+    ans2.nextSibling.data = allQuestions[currentQuestion].choices[1];
+
+    var ans3 = document.getElementById("ans3");
+    ans3.nextSibling.data = allQuestions[currentQuestion].choices[2];
+
+    var ans4 = document.getElementById("ans4");
+    ans4.nextSibling.data = allQuestions[currentQuestion].choices[3];
+
+    var selection = document.getElementsByTagName('input')
+
+    if(selection[allQuestions[currentQuestion].CorrectAnswer].checked == true ){
+      CorrectAnswer ++;
+    } // end if
+
+    
+
+     if (currentQuestion == allQuestions.length-1) {
+        showResults();
+     }
+      currentQuestion ++;
+} // end RadioCheck
+
+
+
+
+</script>
+
+
+
+</head>
+<body onload="RadioCheck()">
+<p>
+<p id="question"></p>
+</p>
+  <input type="radio" name="quiz" id="ans1" >
+   <br>
+  <input type="radio" name="quiz" id="ans2">
+  <br>
+  <input type="radio" name="quiz" id="ans3">
+  <br>
+  <input type="radio" name="quiz" id="ans4">
+  <br>
+
+
+<input type="submit" value="Start" onClick="RadioCheck()">
+</form> 
+
+</body>
+</html>
